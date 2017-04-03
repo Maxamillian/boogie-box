@@ -1,15 +1,16 @@
 var app = require('./app');
-// var config = require('./config');   //contains port & YOUTUBE_API_KEY
 var socket = require('socket.io');
 var ChatData = require('./db').ChatData;
 
-//setting port on server side
-// var port = config.port;
-var port = process.env.PORT
+// freaky Heroku stuff
+const aws = require('aws-sdk');
+let s3 = new aws.S3({
+  port: process.env.port
+});
 
 //starting server
-var server = app.listen(port, function () {
-  console.log('We got the boogie on port', port);
+var server = app.listen(s3.port, function () {
+  console.log('We got the boogie on port', s3.port);
 });
 
 //starting socket on server instance
