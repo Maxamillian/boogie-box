@@ -1,10 +1,11 @@
 var app = require('./app');
-var config = require('./config');   //contains port & YOUTUBE_API_KEY
+// var config = require('./config');   //contains port & YOUTUBE_API_KEY
 var socket = require('socket.io');
 var ChatData = require('./db').ChatData;
 
 //setting port on server side
-var port = config.port;
+// var port = config.port;
+var port = process.env.PORT
 
 //starting server
 var server = app.listen(port, function () {
